@@ -6,9 +6,12 @@ const ExpenseForm = ({expense,setExpense}) => {
 
     const AddExpense = (e) => {
         e.preventDefault()
-        console.log(desc.current.value)
+        if(desc.current.value && price.current.value){
         setExpense([...expense,{"desc": desc.current.value,"price": price.current.value}])
-
+        }
+        else{
+            alert("Fill Blanks")
+        }
         desc.current.value = ""
         price.current.value = ""
     }

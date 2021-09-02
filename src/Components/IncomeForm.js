@@ -6,8 +6,13 @@ const IncomeForm = ({income,setIncome}) => {
 
     const AddIncome = (e) => {
         e.preventDefault()
-        console.log(desc.current.value)
-        setIncome([...income,{"desc": desc.current.value,"price": price.current.value}])
+        if(desc.current.value && price.current.value){
+            setIncome([...income,{"desc": desc.current.value,"price": price.current.value}])
+        }
+        else{
+            alert("Fill Blanks")
+        }
+        
 
         desc.current.value = ""
         price.current.value = ""
