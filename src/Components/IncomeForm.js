@@ -1,11 +1,23 @@
-import React from 'react'
+import React, {useRef} from 'react'
 
-const IncomeForm = () => {
+const IncomeForm = ({income,setIncome}) => {
+    const desc = useRef(null)
+    const price = useRef(null)
+
+    const AddIncome = (e) => {
+        e.preventDefault()
+        console.log(desc.current.value)
+        setIncome([...income,{"desc": desc.current.value,"price": price.current.value}])
+
+        desc.current.value = ""
+        price.current.value = ""
+    }
+
     return (
-        <form className="income-form">
+        <form className="income-form" onSubmit={AddIncome}>
             <div className="form-inner">
-                <input type="text" name ="desc" id = "desc" placeholder="Income Description..."/>
-                <input type="number" name = "price" id="price" placeholder="Price..."/>
+                <input type="text" name ="desc" id = "desc" placeholder="Income Description..." ref={desc}/>
+                <input type="number" name = "price" id="price" placeholder="Price..." ref = {price}/>
                 <input type="submit" value="add income"/>
             </div>
         </form>
