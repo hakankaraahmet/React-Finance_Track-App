@@ -5,6 +5,7 @@ import IncomeForm from './Components/IncomeForm'
 import ExpenseForm from './Components/ExpenseForm'
 import IncomeList from './Components/IncomeList'
 import ExpenseList from './Components/ExpenseList'
+import CurrencyRow from './Components/Profit'
 const App = () => {
   const[income,setIncome] = useState([])
   const[totalIncome,setTotalIncome] = useState(0)
@@ -30,14 +31,20 @@ const App = () => {
 
 
   return (
-    <div>
+    <div >
+      <div className="container">
+      <div className="first-part">
       <Header totalIncome={totalIncome} />
       <IncomeForm income = {income} setIncome={setIncome} />
       <IncomeList income = {income} setIncome={setIncome}/>
-      <hr/>
+      </div>
+      <div className="second-part">
       <Header2 totalExpense={totalExpense}/>
       <ExpenseForm expense={expense} setExpense = {setExpense}/>
       <ExpenseList expense = {expense} setExpense={setExpense}/>
+      </div>
+      </div>
+      <CurrencyRow totalExpense={totalExpense} totalIncome={totalIncome}/>
     </div>
   )
 }
